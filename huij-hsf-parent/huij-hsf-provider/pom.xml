@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.huij.hsf</groupId>
+		<artifactId>huij-hsf-parent</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>huij-hsf-provider</artifactId>
+	<name>huij-hsf-provider</name>
+	<packaging>war</packaging>
+
+	<dependencies>
+
+		<!-- app dep -->
+		<dependency>
+			<groupId>com.huij.hsf</groupId>
+			<artifactId>huij-hsf-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- 这里需要排除SpringBoot的嵌入式tomcat，否则会和tomcat4e插件起冲突，在排除该插件后，需要加入servlet，并标记为provided，防止编译到war包里面 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba.edas</groupId>
+			<artifactId>edas-sdk</artifactId>
+			<version>${edas-sdk.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-hsf</artifactId>
+		</dependency>
+
+		<!-- Alibaba Aliware 依赖 -->
+		<!-- pandora-boot启动依赖 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-pandora</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba.edas.configcenter</groupId>
+			<artifactId>configcenter-client</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>huij-hsf-provider</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
