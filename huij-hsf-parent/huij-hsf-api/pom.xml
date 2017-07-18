@@ -8,11 +8,14 @@
 		<artifactId>huij-hsf-parent</artifactId>
 		<version>1.0</version>
 	</parent>
-	<groupId>com.huij.hsf</groupId>
 	<artifactId>huij-hsf-api</artifactId>
 	<version>1.0.0</version>
 	<name>huij-hsf-api</name>
+	<packaging>jar</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<build>
+		<finalName>huij-hsf-api</finalName>
+	</build>
 </project>
